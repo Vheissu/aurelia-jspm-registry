@@ -1,0 +1,9 @@
+<template>
+    <section>
+        <ul>
+            <li repeat.for="package of packages">
+                <a href="http://${package.url}"><strong>${package.key}</strong><small>${package.source}</small></a>
+            </li>
+        </ul>
+    </section>
+</template>
