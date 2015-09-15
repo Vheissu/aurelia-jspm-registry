@@ -39,9 +39,29 @@ export class Home {
                 }
             });
 
-            this.packages          = mapped;
-            this.original_packages = mapped;
+            // Store and cache the packages
+            this.persistPackages(mapped);
+        })
+        .catch(e => {
+            if (e.status === 304 || 403) {
+                // Search the cache for packages
+                let packages = window.localStorage.getItem('cached_packages');
+
+                if (packages) {
+                    // Store packages, but don't cache again
+                    this.persistPackages(JSON.parse(packages), false);
+                }
+            }
         });
+    }
+
+    persistPackages(packages, cache=true) {
+        this.packages          = packages;
+        this.original_packages = packages;
+
+        if (cache) {
+            window.localStorage.setItem('cached_packages', JSON.stringify(this.packages));
+        }
     }
 
     search(val) {
