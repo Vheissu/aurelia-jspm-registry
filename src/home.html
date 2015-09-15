@@ -1,9 +1,29 @@
 <template>
-    <section>
-        <ul>
-            <li repeat.for="package of packages">
-                <a href="http://${package.url}"><strong>${package.key}</strong><small>${package.source}</small></a>
-            </li>
-        </ul>
-    </section>
+
+    <header>
+        <div class="container-fluid">
+            <h1>JSPM Registry</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <p>Total number of JSPM packages: <strong>${original_packages.length}</strong></p>
+        <section class="search">
+            <form name="search" action="POST">
+                <div class="form-group">
+                    <label for="search"></label>
+                    <input type="text" class="form-control" placeholder="SEARCH" keyup.trigger="search($event.target.value)" ref="searchInput" value="">
+                </div>
+            </form>
+        </section>
+
+        <section class="packages">
+            <p show.bind="searchInput.value.length">Search results found: ${packages.length}</p>
+            <ul>
+                <li class="packages__package" repeat.for="package of packages">
+                    <a href="http://${package.url}"><strong>${package.key}</strong><small>${package.source}</small></a>
+                </li>
+            </ul>
+        </section>
+    </div>
 </template>
