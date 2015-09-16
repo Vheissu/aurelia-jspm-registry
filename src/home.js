@@ -55,7 +55,12 @@ export class Home {
     }
 
     persistPackages(packages, cache=true) {
-        this.packages          = packages;
+        packages.sort((a, b) => {
+            let sortA = a.key.toUpperCase();
+            let sortB = b.key.toUpperCase();
+            return (sortA < sortB) ? -1 : (sortA > sortB) ? 1 : 0;
+        });
+        this.packages = packages;
 
         if (cache) {
             window.localStorage.setItem('cached_packages', JSON.stringify(this.packages));
