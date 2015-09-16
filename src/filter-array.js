@@ -1,13 +1,18 @@
 export class FilterValueConverter {
-    toView(val, input) {
-        let temp = val;
+    toView(array, config) {
+        let prop = config.search;
+        let term = config.term.trim();
+        let caseSensitive = config.caseSensitive || false;
 
-        if (!input.value.length) {
-            return val;
-        } else {
-            return temp.filter(obj => {
-                return obj.key.search(new RegExp(input.value, 'gi')) >= 0;
-            });
-        }
+        return (!term) ? array : array.filter(item => {
+            let foundItem = item[prop];
+
+            if (!caseSensitive) {
+                foundItem = foundItem.toLowerCase();
+                term = term.toLowerCase();
+            }
+
+            return foundItem.indexOf(term) >= 0;
+        });
     }
 }
