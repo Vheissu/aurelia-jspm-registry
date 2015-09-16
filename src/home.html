@@ -7,7 +7,7 @@
     </header>
 
     <div class="container">
-        <p>Total number of JSPM packages: <strong>${original_packages.length}</strong></p>
+        <p>Total number of JSPM packages: <strong>${packages.length}</strong></p>
         <section class="search">
             <form name="search" action="POST">
                 <div class="form-group">
@@ -18,7 +18,6 @@
         </section>
 
         <section class="packages">
-            <p show.bind="searchInput.value.length">Search results found: ${packages.length}</p>
             <ul>
                 <li class="packages__package" repeat.for="package of packages | filter: {term: searchInput.value, search: 'key'}">
                     <a href="http://${package.url}"><strong>${package.key}</strong><small>${package.source}</small></a>

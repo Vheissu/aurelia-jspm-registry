@@ -4,7 +4,6 @@ import 'fetch';
 
 @inject(HttpClient)
 export class Home {
-    original_packages = [];
     packages          = [];
 
     constructor(http) {
@@ -57,20 +56,9 @@ export class Home {
 
     persistPackages(packages, cache=true) {
         this.packages          = packages;
-        this.original_packages = packages;
 
         if (cache) {
             window.localStorage.setItem('cached_packages', JSON.stringify(this.packages));
-        }
-    }
-
-    search(val) {
-        if (val.length) {
-            this.packages = this.original_packages.filter(obj => {
-                return obj.key.search(new RegExp(val, 'gi')) >= 0;
-            });
-        } else {
-            this.packages = this.original_packages;
         }
     }
 }
