@@ -21,6 +21,31 @@ ul, li {
         box-shadow: none;
     }
 
+.packages__toggle {
+    border: 1px solid #DEDEDE;
+    margin-bottom: 30px;
+    padding: 15px;
+}
+
+    .packages__toggle strong {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .packages__toggle a {
+        color: #333;
+        display: inline-block;
+        padding: 10px;
+        text-decoration: none;
+    }
+
+    .packages__toggle a.active,
+    .packages__toggle a:hover {
+        background: #5791CC;
+        color: #FFF;
+        text-decoration: none;
+    }
+
 .packages__package {
     border-bottom: 1px solid #DEDEDE;
     margin-bottom: 25px;

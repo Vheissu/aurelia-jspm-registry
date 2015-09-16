@@ -54,6 +54,22 @@ export class Home {
         });
     }
 
+    attached() {
+        setTimeout(() => {
+            console.log(this.packagesToggle);
+            this.packagesToggle.addEventListener('click', e => {
+                let item = e.target;
+
+                if (item.tagName === 'A') {
+                    document.querySelector('.active').classList.remove('active');
+                    item.classList.add('active');
+
+                    e.preventDefault();
+                }
+            });
+        }, 50);
+    }
+
     persistPackages(packages, cache=true) {
         packages.sort((a, b) => {
             let sortA = a.key.toUpperCase();

@@ -18,6 +18,12 @@
         </section>
 
         <section class="packages">
+            <div class="packages__toggle">
+                <strong>Show packages:</strong>
+                <a href="#" class="active">All</a>
+                <a href="#">Github</a>
+                <a href="#">Npm</a>
+            </div>
             <ul>
                 <li class="packages__package" repeat.for="package of packages | filter: {term: searchInput.value, search: 'key'}">
                     <a href="http://${package.url}"><strong>${package.key}</strong><small>${package.source}</small></a>
