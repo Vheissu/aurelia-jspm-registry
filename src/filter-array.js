@@ -4,15 +4,30 @@ export class FilterValueConverter {
         let term = config.term.trim();
         let caseSensitive = config.caseSensitive || false;
 
-        return (!term) ? array : array.filter(item => {
-            let foundItem = item[prop];
+        let filtered = array.filter(item => {
+            if (term) {
+                let foundItem = item[prop];
 
-            if (!caseSensitive) {
-                foundItem = foundItem.toLowerCase();
-                term = term.toLowerCase();
+                if (!caseSensitive) {
+                    foundItem = foundItem.toLowerCase();
+                    term = term.toLowerCase();
+                }
+
+                return foundItem.indexOf(term) >= 0;
+            } else {
+                return item;
             }
+        });
 
-            return foundItem.indexOf(term) >= 0;
+        return (!config.sort) ? filtered : filtered.filter(item => {
+            let sortKey = config.sort.key;
+            let sortVal = config.sort.value;
+
+            if (sortVal === '') {
+                return item;
+            } else {
+                return (item[sortKey] == sortVal);
+            }
         });
     }
 }
