@@ -23,6 +23,24 @@ ul, li {
 
 .packages__package {
     border-bottom: 1px solid #DEDEDE;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+}
+
+.packages__package a {
+    color: #2E2E2E;
+    display: block;
+    text-decoration: none;
+}
+
+.packages__package a:hover {
+    text-decoration: none;
+}
+
+.packages__package strong {
+    margin-right: 4px;
+}
+
+.packages__package small {
+    color: #656565;
 }
