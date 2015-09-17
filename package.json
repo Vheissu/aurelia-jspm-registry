@@ -91,5 +91,8 @@
         "main": "client/shim.min"
       }
     }
+  },
+  "dependencies": {
+    "connect-history-api-fallback": "^1.1.0"
   }
 }
