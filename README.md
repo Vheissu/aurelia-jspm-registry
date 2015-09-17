@@ -10,3 +10,6 @@ The basis of most modern SPA applications is getting data from an API and then d
 ## Run
 1. gulp watch
 2. http://localhost:9000/
+
+## Demo
+You can see this app in action here: http://vheissu.github.io/aurelia-jspm-registry/ - the application is bundled for speed.
