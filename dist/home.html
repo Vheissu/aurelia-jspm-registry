@@ -1,0 +1,35 @@
+<template>
+
+    <header>
+        <div class="container-fluid">
+            <h1>JSPM Registry</h1>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <p>Total number of JSPM packages: <strong>${packages.length}</strong></p>
+        <section class="search">
+            <form name="search" action="POST">
+                <div class="form-group">
+                    <label for="search"></label>
+                    <input type="text" class="form-control" placeholder="SEARCH" ref="searchInput">
+                </div>
+            </form>
+        </section>
+
+        <section class="packages">
+            <div class="packages__toggle" ref="packagesToggle">
+                <strong>Show packages:</strong>
+                <a href="#" class="active" data-sort="">All</a>
+                <a href="#" data-sort="github">Github</a>
+                <a href="#" data-sort="npm">Npm</a>
+            </div>
+            <ul>
+                <li class="packages__package" repeat.for="package of packages | filter: {term: searchInput.value, search: 'key', sort: {key: 'distro', value: filter}}">
+                    <a href="http://${package.url}"><strong>${package.key}</strong><small>${package.source}</small></a>
+                </li>
+            </ul>
+        </section>
+    </div>
+</template>
