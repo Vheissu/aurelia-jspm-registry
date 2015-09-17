@@ -1,5 +1,4 @@
 System.config({
-  baseURL: '/aurelia-jspm-registry',
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
